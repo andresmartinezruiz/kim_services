@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from django.db import models
 
+# Create your models here.
 class Pais(models.Model):
     nombre = models.CharField(max_length=50)
     cargado_010 = models.BooleanField(default=False)
@@ -37,7 +41,6 @@ class Barrio(models.Model):
     aprobado_050 = models.BooleanField(default=False)
     aprobado_050_por_gecos = models.CharField(max_length=100, null=True)
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
-
 
 
 

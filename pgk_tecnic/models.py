@@ -1,6 +1,10 @@
-from pgk_const.models import Barrio
-from pgk_user.models import UserProfile
+# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
+from pgk_const.models import Barrio
+from django.db import models
+
+# Create your models here.
 class OperadoraServicio(models.Models):
     nombre = models.CharField(max_length=50)
     cargado_010 = models.BooleanField(default=False)
@@ -40,7 +44,7 @@ class Canales(models.Model):
     aprobado_050_por_gecos = models.CharField(max_length=100, null=True)
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
- class Meter(models.Model):
+class Meter(models.Model):
     nombre = models.CharField(max_length=50)
     nro_serie = models.CharField(max_length=50)
     tipo = models.TextField(max_length=100)
@@ -135,8 +139,7 @@ class CircuitoDetailRelevamiento(models.Model):
     circuitodetailtaskobj = models.ForeignKey('CCircuitoDetail', blank=True, null=True, on_delete=models.CASCADE) 
     entrevistado = models.CharField(null=True, blank=True)
     relaciondelentrevistado = models.CharField(null=True, blank=True)
-    telefono = models.CharField(null=True, blank = True)
-    
+    telefono = models.CharField(null=True, blank = True) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -177,9 +180,3 @@ class CircuitoDetailMateriales(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
 
-
-
-
- 
- 
-    
