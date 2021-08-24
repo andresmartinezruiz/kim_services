@@ -1,12 +1,15 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
+from django.db.models import Q
+
 from django.contrib.postgres.fields import JSONField
 import os
 import json
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.db import models
+import base64
+import datetime
 
 # Create your models here.
 
@@ -143,14 +146,14 @@ class UserProfile(models.Model):
     work_empresa = JSONField(default=['IBO'])
     userobj = models.OneToOneField(User, verbose_name='USUARIO', on_delete=models.PROTECT)
     tipo_bodeguero = models.CharField(max_length=15, null=True, default='LLEVA')
-    photo = models.ImageField(upload_to='dashboard/profiles/', max_length=260, null=True, verbose_name='FOTO', help_text='Foto Perfil')
-    photo_web = models.BooleanField(default=False)
+    #photo = models.ImageField(upload_to='dashboard/profiles/', max_length=260, null=True, verbose_name='FOTO', help_text='Foto Perfil')
+    #photo_web = models.BooleanField(default=False)
     bloqueo_exento = models.BooleanField(default=False)
     bloqueo = models.BooleanField(default=False)
     desbloqueo_fecha = models.DateField(null=True)
     ea_teamleader = models.BooleanField(default=False)
     ea_grupo = models.CharField(max_length=60, default='ND')
-    backphoto = models.ImageField(upload_to='dashboard/profiles/', max_length=260, null=True, verbose_name='FOTO')
+    #backphoto = models.ImageField(upload_to='dashboard/profiles/', max_length=260, null=True, verbose_name='FOTO')
     clientecod = models.CharField(max_length=15, blank=True, null=True)
     supervisor_ventas = models.CharField(max_length=30, null=True,blank=True)
     vendedor_listas = JSONField(null=True, blank=True)

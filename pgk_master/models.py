@@ -1,15 +1,24 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.db.models import Q
 
+from django.contrib.postgres.fields import JSONField
+import os
+import json
 from django.db import models
+from django.conf import settings
+from django.contrib.auth.models import User
+import base64
+import datetime
+
 
 # Create your models here.
 
 class Hogar(models.Model):
     hogarid = models.AutoField(primary_key=True)
-    Direccion = models.CharField(max_length=50)
-    Barrio = models.CharField(max_length=50)
-    Ciudad = models.CharField(max_length=50)
+    direccion = models.CharField(max_length=50)
+    barrio = models.CharField(max_length=50)
+    ciudad = models.CharField(max_length=50)
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -38,10 +47,10 @@ class Catastro(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
 class Rodados(models.Model):
-    Chapa = models.CharField(max_length=100, null=True)
-    Marca = models.CharField(max_length=100, null=True)
-    Modelo = models.CharField(max_length=100, null=True)
-    Tipo = models.CharField(max_length=100, null=True)
+    chapa = models.CharField(max_length=100, null=True)
+    marca = models.CharField(max_length=100, null=True)
+    modelo = models.CharField(max_length=100, null=True)
+    tipo = models.CharField(max_length=100, null=True)
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)

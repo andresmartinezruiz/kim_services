@@ -1,10 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.contrib.postgres.fields import JSONField
+from django.conf import settings
+import base64
+import datetime
+from django.db import models
+from django.db.models import Q
+
 
 from pgk_const.models import Barrio
 from pgk_master.models import Hogar
 from pgk_user.models import UserProfile
-from django.db import models
+
 
 # Create your models here.
 class OperadoraServicio(models.Model):
