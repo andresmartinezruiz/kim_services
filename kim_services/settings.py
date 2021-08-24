@@ -31,12 +31,19 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #local apps
+    'pgk_const',
+    'pgk_user',
+    'pgk_tecnic',
+    'pgk_master',
+    'pgk_stock'
 ]
 
 MIDDLEWARE = [
@@ -75,9 +82,17 @@ WSGI_APPLICATION = 'kim_services.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'kimbits',
+        'USER': 'mainline',
+        'PASSWORD': 'mainline',
+        'HOST': 'localhost',
+        'PORT': '',
+    },
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
 }
 
 

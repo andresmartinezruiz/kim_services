@@ -2,10 +2,12 @@
 from __future__ import unicode_literals
 
 from pgk_const.models import Barrio
+from pgk_master.models import Hogar
+from pgk_user.models import UserProfile
 from django.db import models
 
 # Create your models here.
-class OperadoraServicio(models.Models):
+class OperadoraServicio(models.Model):
     nombre = models.CharField(max_length=50)
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
@@ -17,9 +19,9 @@ class OperadoraServicio(models.Models):
     aprobado_050_por_gecos = models.CharField(max_length=100, null=True)
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
  
-class sintonia(models.Models):
-    operadora = models.ForeignKey('CCanal', blank=True, null=True, on_delete=models.CASCADE)
-    canal = models.ForeignKey('CCanal', blank=True, null=True, on_delete=models.CASCADE)
+class Sintonia(models.Model):
+    operadoraobj = models.ForeignKey(OperadoraServicio, blank=True, null=True, on_delete=models.CASCADE)
+    canal = models.CharField(max_length=100, null=True)
     numero = models.IntegerField()
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
@@ -79,7 +81,7 @@ class Televisor(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
  
 class Accesorios(models.Model):
-    televisorobj = models.ForeignKey(Televisor)
+    televisorobj = models.ForeignKey(Televisor, blank=True, null=True, on_delete=models.CASCADE)
     marca = models.CharField(max_length=20)
     modelo = models.CharField(max_length=20)
     tipo = models.CharField(max_length=20)
@@ -98,10 +100,10 @@ class Accesorios(models.Model):
 
 class CircuitoHeader(models.Model):
     fecha = models.DateField(max_length=10)
-    responsable1 = models.ForeignKey('CUserProfile', blank=True, null=True, on_delete=models.CASCADE) 
+    responsable1 = models.ForeignKey(UserProfile, blank=True, null=True, on_delete=models.CASCADE) 
     responsable2 = models.CharField(max_length=50)
     chofer = models.CharField(max_length=50)
-    vehiculo = models.CharField(max_lenght=50, null=True) 
+    vehiculo = models.CharField(max_length=50, null=True) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -113,18 +115,18 @@ class CircuitoHeader(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
  
 class CircuitoDetail(models.Model): 
-    circuitoheaderobj = models.ForeignKey('CCircuitoHeader', blank=True, null=True, on_delete=models.CASCADE) 
-    horallegada = models.DatetimeField(null=True, blank=True)
-    horasalida = models.DatetimeField(null=True, blank=True)
+    circuitoheaderobj = models.ForeignKey(CircuitoHeader, blank=True, null=True, on_delete=models.CASCADE) 
+    horallegada = models.DateTimeField(null=True, blank=True)
+    horasalida = models.DateTimeField(null=True, blank=True)
     km = models.IntegerField(default=0)
-    geo = models.CharField((null=True, blank=True))
-    hogar = models.ForeignKey('CHogar', blank=True, null=True, on_delete=models.CASCADE) 
-    barrio = models.CharField(null=True, blank=True)
-    ciudad = models.CharField(null=True, blank=True)
-    motivovisita = models.CharField(null=True, blank=True)
-    estado = models.CharField(null=True, blank=True)
+    geo = models.CharField(max_length=100, null=True, blank=True)
+    hogar = models.ForeignKey(Hogar, blank=True, null=True, on_delete=models.CASCADE) 
+    barrio = models.CharField(max_length=100, null=True, blank=True)
+    ciudad = models.CharField(max_length=100, null=True, blank=True)
+    motivovisita = models.CharField(max_length=100, null=True, blank=True)
+    estado = models.CharField(max_length=100, null=True, blank=True)
     efectividad = models.BooleanField(default=False)
-    proximavisita=models.DateTimeField(null=true) 
+    proximavisita=models.DateTimeField(null=True) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -136,10 +138,10 @@ class CircuitoDetail(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
 class CircuitoDetailRelevamiento(models.Model):
-    circuitodetailtaskobj = models.ForeignKey('CCircuitoDetail', blank=True, null=True, on_delete=models.CASCADE) 
-    entrevistado = models.CharField(null=True, blank=True)
-    relaciondelentrevistado = models.CharField(null=True, blank=True)
-    telefono = models.CharField(null=True, blank = True) 
+    circuitodetailtaskobj = models.ForeignKey(CircuitoDetail, blank=True, null=True, on_delete=models.CASCADE) 
+    entrevistado = models.CharField(max_length=100, null=True, blank=True)
+    relaciondelentrevistado = models.CharField(max_length=100, null=True, blank=True)
+    telefono = models.CharField(max_length=100, null=True, blank = True) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -152,9 +154,8 @@ class CircuitoDetailRelevamiento(models.Model):
     
 
 class CircuitoDetailSiguienteVisita(models.Model):
-    circuitodetailtaskobj = models.ForeignKey('CCircuitoDetail', blank=True, null=True, on_delete=models.CASCADE) 
-    recomendacion = models.CharField(max_lenght=100, null=True)
-
+    circuitodetailtaskobj = models.ForeignKey(CircuitoDetail, blank=True, null=True, on_delete=models.CASCADE) 
+    recomendacion = models.CharField(max_length=100, null=True)
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -166,9 +167,8 @@ class CircuitoDetailSiguienteVisita(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
 class CircuitoDetailMateriales(models.Model):
-    circuitodetailtaskobj = models.ForeignKey('CCircuitoDetail', blank=True, null=True, on_delete=models.CASCADE) 
-    materialutilizado = models.ForeignKey('CAccesorios', blank=True, null=True, on_delete=models.CASCADE) 
-
+    circuitodetailtaskobj = models.ForeignKey(CircuitoDetail, blank=True, null=True, on_delete=models.CASCADE) 
+    materialutilizado = models.ForeignKey(Accesorios, blank=True, null=True, on_delete=models.CASCADE) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)

@@ -17,8 +17,8 @@ class Pais(models.Model):
     aprobado_050_fecha = models.DateTimeField(null=True, blank=True)
 
 class Ciudad(models.Model):
-    nombreciudad = models.CharField(help_text='nombreBarrio', max_length=70) 
-    nombrepais = models.ForeignKey('CPais', blank=True, null=True, on_delete=models.CASCADE)
+    nombreciudad = models.CharField(help_text='nombreCiudad', max_length=70) 
+    nombrepais = models.ForeignKey(Pais, blank=True, null=True, on_delete=models.CASCADE)
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
@@ -31,7 +31,7 @@ class Ciudad(models.Model):
 
 class Barrio(models.Model):
     nombrebarrio = models.CharField(help_text='nombreBarrio', max_length=70)  # Field name made lowercase.
-    nombreciudad = models.ForeignKey('CCiudad', blank=True, null=True, on_delete=models.CASCADE) 
+    nombreciudad = models.ForeignKey(Ciudad, blank=True, null=True, on_delete=models.CASCADE) 
     cargado_010 = models.BooleanField(default=False)
     cargado_010_por_gecos = models.CharField(max_length=100, null=True)
     cargado_010_fecha = models.DateTimeField(null=True, blank=True)
