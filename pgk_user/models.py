@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 from django.db.models import Q
-
 from django.contrib.postgres.fields import JSONField
-import os
-import json
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+
+import os
+import json
 import base64
 import datetime
 

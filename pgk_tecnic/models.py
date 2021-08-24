@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
+
+#django
 from django.contrib.postgres.fields import JSONField
 from django.conf import settings
-import base64
-import datetime
 from django.db import models
 from django.db.models import Q
 
+#others
+from __future__ import unicode_literals
+import base64
+import datetime
 
+#local
 from pgk_const.models import Barrio
 from pgk_master.models import Hogar
 from pgk_user.models import UserProfile
