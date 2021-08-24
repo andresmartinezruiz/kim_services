@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 #django
 from django.db import models
@@ -8,7 +9,6 @@ from django.db.models import Q
 from django.contrib.postgres.fields import JSONField
 
 #others
-from __future__ import unicode_literals
 import os
 import json
 import base64

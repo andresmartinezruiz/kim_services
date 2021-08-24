@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 #django
 from django.contrib.postgres.fields import JSONField
@@ -7,7 +8,6 @@ from django.db import models
 from django.db.models import Q
 
 #others
-from __future__ import unicode_literals
 import base64
 import datetime
 
