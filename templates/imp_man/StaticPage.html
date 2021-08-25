@@ -1,0 +1,39 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+	<link rel="shortcut icon" href="{% static "smartadmin/img/favicon/favicon.ico" type="image/x-icon" %}">
+	<link rel="icon" href="{% static "smartadmin/img/favicon/favicon.ico" type="image/x-icon" %}">
+	<meta charset="utf-8">
+	<title>Netipa (AJAX) 5.0</title>
+	<meta name="description" content="">
+	<meta name="author" content="n3tw4lk3r">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static "smartadmin/css/bootstrap.min.css" %}">
+	<link href="{% static  "dist/js/select2/select2.min.css" %}" rel="stylesheet">
+	<link href="{% static  "dist/js/select2/select2-bootstrap.min.css" %}" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="{% static  "dist/js/DataTables/datatables.min.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static  "dist/js/pivotjs/pivot.min.css" %}" />
+	<link  class="link-override" rel="stylesheet" type="text/css" href="{% static "paramquery/office.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "paramquery/pqgrid.min.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "paramquery/pqselect.min.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "smartadmin/css/jquery-ui-1.12.1.min.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "timepicker/jquery-ui-timepicker-addon.css" %}" />
+	<link rel="stylesheet" type="text/css" href="{% static "jstree/themes/default/style.min.css" %}" />
+	<link rel="stylesheet" type="text/css" media="screen" href="{% static "smartadmin/css/your_style.css" %}">
+    </head>
+    <body>
+	<button class="btn btn-xs btn-secondary" onclick="common_tools.html2pdf('{% url "weasy_print" %}', '#dinamic_report')"><span class="fa fa-print"></span></button>
+	<div id="dinamic_report">
+	    {{ html }}
+	</div>
+
+	<script src="{% static "smartadmin/js/libs/jquery-2.1.1.min.js" %}"></script>
+	<script src="{% static "smartadmin/js/jquery-ui-1.12.1.min.js" %}"></script>
+	<script src="{% static "smartadmin/js/bootstrap/bootstrap.min.js" %}"></script>
+	<script src="{% static "fawesome/js/fontawesome-all.min.js" %}"></script>
+	<script src="{% static "dist/js/iwakura.js" %}"></script>
+    </body>
+</html>
+
+

@@ -1,0 +1,25 @@
+Clarion to Text convert 2.0 (console tool)
+http://www.scalabium.com/clarion/cla2txt.htm
+
+
+- simple export
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt
+
+- export to text and add field names
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt /h
+
+- export to text and add field names+field types
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt /h /f
+
+- use custom field delimiter and/or qualifider
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt /delimiter=,
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt /delimiter=, /qualifier=\"
+
+- export only non-complex field names (without groups, arrays etc)
+CLA2TXT.EXE c:\data\country.dat c:\out\country.txt /group=0
+
+Mike Shkolnik, Scalabium Software
+EMail: mshkolnik@scalabium.com
+http://www.scalabium.com
+
+
