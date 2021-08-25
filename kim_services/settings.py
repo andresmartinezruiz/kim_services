@@ -25,7 +25,10 @@ SECRET_KEY = '(7593ol-6lz7=$25yr+k8+qi-30z@gikk+^p68!xoyzg16!5c)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -39,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #local apps
+    'imp_man',
     'pgk_const',
     'pgk_user',
     'pgk_tecnic',
@@ -61,7 +65,7 @@ ROOT_URLCONF = 'kim_services.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\', '/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,10 +78,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'kim_services.wsgi.application'
-
-
-# Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
@@ -126,10 +126,22 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), '..', 'gstack').replace('\\','/'),
+    # Put strings here, like "/home/html/static" or "C:/www/django/static".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
