@@ -11,9 +11,7 @@ Y veras lo siguiente.
 
  ![First page of the system](/img/fpage.png)
 
- La primera APP de prueba creada esta en 
-
- La primera APP de prueba creada esta en [APP_APRUEBA](http://localhost:8001/imp_man/dinamic_template/?template_name=imp_man/PruebaUi.html&standalone=1).
+  La primera APP de prueba creada esta en [APP_APRUEBA](http://localhost:8001/imp_man/dinamic_template/?template_name=imp_man/PruebaUi.html&standalone=1).
 
  Observa como se componen la peticion http
 
@@ -27,4 +25,4 @@ Y veras lo siguiente.
 
  ![DEMO PAGE](/img/dpage.png)
 
- HAPPY CODING!!
+  HAPPY CODING!!
