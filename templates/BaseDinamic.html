@@ -24,6 +24,8 @@
         <link rel="stylesheet" type="text/css" href="{% static "timepicker/jquery-ui-timepicker-addon.css" %}?833"/>
     </head>
     <body id="body" style="background-color: white; font-size: 12px;">
+        <div id="main_content" class="queseyo"></div>
+        <div id="main_content" class="queseyo"></div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/jquery@2.2.4/dist/jquery.js"></script>            
@@ -50,7 +52,13 @@
         <script type="text/javascript" src="{% static "pqgridpro60/pqSelect/pqselect.min.js" %}?833"></script>
         <div id="dcontent" class="container">
 
-        </div>        
+        </div>
+        <!--   api_ui.get_template("imp_man","DinamicMenu.html", '.queseyo') va abajo del javascript-->
+        
+        <script type="text/javascript">
+            api_ui.get_template("pgk_master","HogaresUI.html", '.queseyo')
+        
+        </script>        
     </body>
     <script type="text/javascript"></script>
 </html>

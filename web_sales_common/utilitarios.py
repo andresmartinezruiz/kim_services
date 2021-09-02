@@ -128,7 +128,7 @@ def querydict_params(q, exclude):
             try:
                 params.update({key: int(l[1][0].strip())})
             except:
-                params.update({key: l[1][0].strip()})
+                params.update({key: str(l[1][0]).strip()})
     return params
 
 def setf_querie(key, field):

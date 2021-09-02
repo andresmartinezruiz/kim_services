@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from imp_man.views import default_page
+from pgk_master.views import hogares_page 
 
 urlpatterns = [
     url(r'^$', default_page),
-    url(r'^imp_man/', include('imp_man.urls')),    
+    #url(r'^$', hogares_page),
+    #url(r'^$', include('pgk_master.urls')),
+    url(r'^imp_man/', include('imp_man.urls')),  
+    #url(r'^pgk_master/', include('pgk_master.urls')),  
 ]

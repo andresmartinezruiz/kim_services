@@ -7,7 +7,8 @@ from web_sales_common import utilitarios
 import json
 class FormatCache(object):
     def model_keyfiels(self):
-      params = {   'prueba': {
+      params = {   
+        'prueba': {
         'fields': [
           'id',
           'nombre', 'apellido',
@@ -23,8 +24,29 @@ class FormatCache(object):
         'aprobado_050',
         'aprobado_050_por_gecos',
         'aprobado_050_fecha',
+        ]},
+        'hogar': {
+        'fields' : [
+          'hogarid',
+          'direccion',
+          'barrio',
+          'ciudad',
+          'cargado_010',
+        'cargado_010_por_gecos',
+        'cargado_010_fecha',
+        'anulado_040',
+        'anulado_040_por_gecos',
+        'anulado_040_fecha',
+        'verificado_045',
+        'verificado_045_por_gecos',
+        'verificado_045_fecha',
+        'aprobado_050',
+        'aprobado_050_por_gecos',
+        'aprobado_050_fecha',
         ]
-      }   }
+
+        } 
+      }
       return params
 
     def serial_model(self, mobj, modelname, **kwargs):

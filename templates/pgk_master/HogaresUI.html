@@ -1,0 +1,101 @@
+<form id="form_hogar">
+    <div class="form-row">
+        <div class="col-md-3 col-b-3">
+            <lablel>Direccion</lablel>
+            <input name="direccion" class="form-control">
+        </div>
+        <div class="col-md-3 col-b-3">
+            <lablel>Barrio</lablel>            
+            <input name="barrio" class="form-control">
+        </div>
+        <div class="col-md-3 col-b-3">
+            <lablel>Ciudad</lablel>
+            <input name="ciudad" class="form-control">
+        </div>
+    </div>
+    <div class="form-row">
+        <button class="btn btn-info">CREAR</button>
+    </div>
+</form>
+<hr>
+<div id="grid_hogar"></div>
+<hr>
+<script type="text/javascript">
+    let fsel = '#form_hogar';
+    let main_model_name = 'Hogar';
+    let main_app_name = 'pgk_master';
+    let main_model_key = 'hogar';
+    let gsel = '#grid_hogar'
+    pqgrid.initialize();
+    vform.submission.add_model(fsel, 
+                               main_app_name, 
+                               main_model_name,
+                               gsel);
+    grid_hogar_colM = [
+    {
+            align: "center", cb: {header: true, select: true, all: true}, type: 'checkbox',
+            cls: 'ui-state-default', dataType: 'bool', editable: true, width: 45
+        },                
+      {dataIndx: 'direccion', title: 'Direccion', width: 120, editable: true},
+      {dataIndx: 'barrio', title: 'Barrio', width: 120},
+      {dataIndx: 'ciudad', title: 'Ciudad', width: 120},  
+      {title: 'Carga', colModel: [
+          { title: 'Usuario', dataIndx: 'cargado_010_por_gecos'},
+          { title: 'Fecha', dataIndx: 'cargado_010_fecha'},        
+        ]},                        
+        {title: 'Anulacion', colModel: [
+         { title: 'Usuario', dataIndx: 'anulado_040_por_gecos'},
+         { title: 'Fecha', dataIndx: 'anulado_040_fecha'},        
+        ]},                                
+        {title: 'Verificacion', colModel: [
+          { title: 'Usuario', dataIndx: 'verificado_045_por_gecos'},
+          { title: 'Fecha', dataIndx: 'verificado_045_fecha'},        
+        ]},                                        
+        {title: 'Aprobacion', colModel: [
+          { title: 'Usuario', dataIndx: 'aprobado_050_por_gecos'},
+          { title: 'Fecha', dataIndx: 'aprobado_050_fecha'},        
+        ]}      
+    ];
+
+    grid_hogar_dataModel = {
+        recIndx: "hogarid",
+        location: "remote",
+        method: "GET",
+        url: "{% url 'get_jsonmodel' %}",
+        postData: {
+            dparamquery: 'dparamquery',
+            key_name: 'salamanca',
+            app_name: main_app_name,
+            model_name: main_model_name,
+            model_key: main_model_key,
+            anulado_040: 0,
+        },
+        getData: function (dataJSON) {
+            var data = dataJSON.data;
+            return { curPage: dataJSON.curPage, totalRecords: dataJSON.totalRecords, data: data };
+        }        
+    }
+
+    grid_hogar_obj = {
+        flex: { all: true },
+        width: 'flex',
+        height: 'flex',
+        scrollModel: { autoFit: true },
+        editable: true,
+        title:"Crud Hogar",
+        colModel: grid_hogar_colM,
+        dataModel: grid_hogar_dataModel,
+        toolbar: {
+            items: [
+                pqgrid.toolbar.edittool(main_model_name, main_app_name),
+                pqgrid.toolbar.verify_model(main_model_name, main_app_name, 'Verificar', gsel),
+                pqgrid.toolbar.approved_model(main_model_name, main_app_name, 'Aprobar', gsel),
+                pqgrid.toolbar.reinitialize(main_model_name, main_app_name, 'Reiniciar el registro', gsel),
+                pqgrid.toolbar.cancel_model(main_model_name, main_app_name, 'Anular', gsel),
+            ]
+        }
+    }    
+    $(gsel).pqGrid(grid_hogar_obj);
+    //toolbar = $(gsel).pqGrid("option", "toolbar");
+    //toolbar.toolbar.set_pqselect_toolbar(toolbar);
+</script>

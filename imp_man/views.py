@@ -38,8 +38,9 @@ def default_page(request):
     if request.method == 'POST':    
         return HttpResponse('Esta es una aplicacion dinamica no muestra nada por defecto, hay que interactuar con la API')
     if request.method == 'GET':    
-        return HttpResponse('Esta es una aplicacion dinamica no muestra nada por defecto, hay que interactuar con la API')        
-
+#        return HttpResponse('Esta es una aplicacion dinamica no muestra nada por defecto, hay que interactuar con la API')        
+       h = 'hola mundo'
+       return render(request, 'BaseDinamic.html', {'z': h})
 @csrf_exempt
 def static_page(request):
     if request.POST.get('html'):
