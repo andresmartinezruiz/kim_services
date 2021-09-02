@@ -24,8 +24,8 @@
         <link rel="stylesheet" type="text/css" href="{% static "timepicker/jquery-ui-timepicker-addon.css" %}?833"/>
     </head>
     <body id="body" style="background-color: white; font-size: 12px;">
-        <div id="main_content" class="queseyo"></div>
-        <div id="main_content" class="queseyo"></div>
+        <div id="menu_app"></div>
+        <div id="main_content"></div>
 
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://unpkg.com/jquery@2.2.4/dist/jquery.js"></script>            
@@ -56,9 +56,10 @@
         <!--   api_ui.get_template("imp_man","DinamicMenu.html", '.queseyo') va abajo del javascript-->
         
         <script type="text/javascript">
-            api_ui.get_template("pgk_master","HogaresUI.html", '.queseyo')
-        
+            api_ui.get_template("imp_man","MenuUi.html", '#menu_app')
         </script>        
     </body>
-    <script type="text/javascript"></script>
+    <script type="text/javascript">
+        pqgrid.initialize();
+    </script>
 </html>

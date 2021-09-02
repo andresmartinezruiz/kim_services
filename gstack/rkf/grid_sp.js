@@ -4,7 +4,6 @@ let icon_user = '<i class="fa fa-user"></i>';
 let icon_calendar = '<i class="fa fa-calendar"></i>'
 pqgrid = {
     initialize: () => {
-        
             $.fn.bootstrapBtn = $.fn.button.noConflict();
             $.fn.bootstrapTooltip = $.fn.tooltip.noConflict();
             if ($.paramquery && $.paramquery.pqGrid) {
