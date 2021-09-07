@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">My super cool APP</a>
+    <a class="navbar-brand" href="#">KIM SERVICES</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,17 +9,30 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <!-- Siempres utilizen el prefijo menu_ en estos botones -->
-                <a id="menu_app_1" class="nav-link" href="#">APP 1</a>
+                <a id="menu_usuarios" class="nav-link" href="#">Usuarios</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                    Father menu
+                    Maestros
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a id="menu_app_2" class="dropdown-item" href="#">Another awesome APP 2</a>
+                    <a id="menu_hogares" class="dropdown-item" href="#">Hogares</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Catastro</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Rodados</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Visitas
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a id="menu_circuito" class="dropdown-item" href="#">Circuito</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Accesorios</a>
                 </div>
             </li>
         </ul>
@@ -30,11 +43,14 @@
     </div>
 </nav>
 <script type="text/javascript">
-    qelem('#menu_app_1').addEventListener('click', () => {
+    qelem('#menu_usuarios').addEventListener('click', () => {
         api_ui.get_template("pgk_tecnic", "VisitasUI.html", '#main_content')
 
     })
-    qelem('#menu_app_2').addEventListener('click', () => {
+    qelem('#menu_hogares').addEventListener('click', () => {
+        api_ui.get_template("pgk_master", "HogaresUI.html", '#main_content')
+    })
+    qelem('#menu_circuito').addEventListener('click', () => {
         api_ui.get_template("pgk_master", "HogaresUI.html", '#main_content')
     })
 </script>

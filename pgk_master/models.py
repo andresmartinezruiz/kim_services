@@ -18,7 +18,6 @@ import datetime
 # Create your models here.
 
 class Hogar(models.Model):
-    hogarid = models.AutoField(primary_key=True)
     direccion = models.CharField(max_length=50)
     barrio = models.CharField(max_length=50)
     ciudad = models.CharField(max_length=50)
